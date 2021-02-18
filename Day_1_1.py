@@ -3,16 +3,16 @@ import re
 f = open("input_1.txt", "r")
 
 lines = f.read()
-expenses = lines.split("\n")
-number1 = 0
-number2 = 0
-for x in expenses:
-    for  y in expenses:
-        if int(x) + int(y) == sum_value:
-            number1 = x
-            number2 = y
-        #print(x + y)
-            
+expenses_string = lines.split("\n")
+expenses = list(map(int, expenses_string))
+expenses.sort()
 
-print(str(number1) + " " + str(number2))
-print(int(number1)*int(number2))
+#Finds combination of 2 numbers in a sorted int list adding up to specified sum
+def find_sum_multiplied_2(sum_value, expenses):   
+    for x in expenses:
+        for y in expenses[1:len(expenses)]:
+            if x+y == sum_value:
+                return x*y
+            
+multiplied_sum = find_sum_multiplied_2(sum_value, expenses)
+print(multiplied_sum)
