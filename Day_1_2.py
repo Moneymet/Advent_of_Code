@@ -1,5 +1,4 @@
 sum_value = 2020
-import re
 f = open("input_1.txt", "r")
 
 lines = f.read()
